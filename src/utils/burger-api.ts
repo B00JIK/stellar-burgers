@@ -72,7 +72,6 @@ type TOrdersResponse = TServerResponse<{
 }>;
 
 export const getIngredientsApi = () =>
-  //!ingredientsSlice
   fetch(`${URL}/ingredients`)
     .then((res) => checkResponse<TIngredientsResponse>(res))
     .then((data) => {
@@ -81,7 +80,6 @@ export const getIngredientsApi = () =>
     });
 
 export const getFeedsApi = () =>
-  //!feedSlice
   fetch(`${URL}/orders/all`)
     .then((res) => checkResponse<TFeedsResponse>(res))
     .then((data) => {
@@ -90,7 +88,6 @@ export const getFeedsApi = () =>
     });
 
 export const getOrdersApi = () =>
-  //!feedSlice
   fetchWithRefresh<TFeedsResponse>(`${URL}/orders`, {
     method: 'GET',
     headers: {
@@ -107,9 +104,7 @@ type TNewOrderResponse = TServerResponse<{
   name: string;
 }>;
 
-export const orderBurgerApi = (
-  data: string[] //!orderSlice
-) =>
+export const orderBurgerApi = (data: string[]) =>
   fetchWithRefresh<TNewOrderResponse>(`${URL}/orders`, {
     method: 'POST',
     headers: {
@@ -128,9 +123,7 @@ type TOrderResponse = TServerResponse<{
   orders: TOrder[];
 }>;
 
-export const getOrderByNumberApi = (
-  number: number //!orderSlice
-) =>
+export const getOrderByNumberApi = (number: number) =>
   fetch(`${URL}/orders/${number}`, {
     method: 'GET',
     headers: {
@@ -139,7 +132,6 @@ export const getOrderByNumberApi = (
   }).then((res) => checkResponse<TOrderResponse>(res));
 
 export type TRegisterData = {
-  //!userSlice
   email: string;
   name: string;
   password: string;
@@ -151,9 +143,7 @@ type TAuthResponse = TServerResponse<{
   user: TUser;
 }>;
 
-export const registerUserApi = (
-  data: TRegisterData //!userSlice
-) =>
+export const registerUserApi = (data: TRegisterData) =>
   fetch(`${URL}/auth/register`, {
     method: 'POST',
     headers: {
@@ -168,14 +158,11 @@ export const registerUserApi = (
     });
 
 export type TLoginData = {
-  //!userSlice
   email: string;
   password: string;
 };
 
-export const loginUserApi = (
-  data: TLoginData //!userSlice
-) =>
+export const loginUserApi = (data: TLoginData) =>
   fetch(`${URL}/auth/login`, {
     method: 'POST',
     headers: {
@@ -189,9 +176,7 @@ export const loginUserApi = (
       return Promise.reject(data);
     });
 
-export const forgotPasswordApi = (
-  data: { email: string } //!userSlice
-) =>
+export const forgotPasswordApi = (data: { email: string }) =>
   fetch(`${URL}/password-reset`, {
     method: 'POST',
     headers: {
@@ -205,9 +190,7 @@ export const forgotPasswordApi = (
       return Promise.reject(data);
     });
 
-export const resetPasswordApi = (
-  data: { password: string; token: string } //!userSlice
-) =>
+export const resetPasswordApi = (data: { password: string; token: string }) =>
   fetch(`${URL}/password-reset/reset`, {
     method: 'POST',
     headers: {
@@ -224,16 +207,13 @@ export const resetPasswordApi = (
 type TUserResponse = TServerResponse<{ user: TUser }>;
 
 export const getUserApi = () =>
-  //!userSlice
   fetchWithRefresh<TUserResponse>(`${URL}/auth/user`, {
     headers: {
       authorization: getCookie('accessToken')
     } as HeadersInit
   });
 
-export const updateUserApi = (
-  user: Partial<TRegisterData> //!userSlice
-) =>
+export const updateUserApi = (user: Partial<TRegisterData>) =>
   fetchWithRefresh<TUserResponse>(`${URL}/auth/user`, {
     method: 'PATCH',
     headers: {
@@ -244,7 +224,6 @@ export const updateUserApi = (
   });
 
 export const logoutApi = () =>
-  //!userSlice
   fetch(`${URL}/auth/logout`, {
     method: 'POST',
     headers: {

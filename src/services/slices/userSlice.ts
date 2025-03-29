@@ -36,6 +36,7 @@ export const getUserData = createAsyncThunk('user/get', async () =>
 export const updateUserData = createAsyncThunk(
   'user/update',
   async (user: Partial<TRegisterData>) => updateUserApi(user)
+  
 );
 
 export const loginUser = createAsyncThunk(

@@ -23,6 +23,7 @@ import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/slices/ingredientsSlice';
 import { getUserData } from '../../services/slices/userSlice';
+import { Center } from '../center';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,8 +43,22 @@ const App = () => {
         <Routes location={backgroundLocation || location}>
           <Route path='/' element={<ConstructorPage />} />
           <Route path='/feed' element={<Feed />} />
-          <Route path='/feed/:number' element={<OrderInfo />} />
-          <Route path='/ingredients/:id' element={<IngredientDetails />} />
+          <Route
+            path='/feed/:number'
+            element={
+              <Center title='Детали заказа'>
+                <OrderInfo />
+              </Center>
+            }
+          />
+          <Route
+            path='/ingredients/:id'
+            element={
+              <Center title='Детали ингредиента'>
+                <IngredientDetails />
+              </Center>
+            }
+          />
           <Route element={<ProtectedRoute notAuthorized />}>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
@@ -53,7 +68,14 @@ const App = () => {
           <Route element={<ProtectedRoute notAuthorized={false} />}>
             <Route path='/profile' element={<Profile />} />
             <Route path='/profile/orders' element={<ProfileOrders />} />
-            <Route path='/profile/orders/:number' element={<OrderInfo />} />
+            <Route
+              path='/profile/orders/:number'
+              element={
+                <Center title='Детали заказа'>
+                  <OrderInfo />
+                </Center>
+              }
+            />
           </Route>
           <Route path='*' element={<NotFound404 />} />
         </Routes>
@@ -76,7 +98,7 @@ const App = () => {
               path='/ingredients/:id'
               element={
                 <Modal
-                  title={'Детали ингредиентов'}
+                  title={'Детали ингредиента'}
                   onClose={() => {
                     navigate(-1);
                   }}

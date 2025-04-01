@@ -1,4 +1,5 @@
 import {
+  fetchWithRefresh,
   forgotPasswordApi,
   getUserApi,
   loginUserApi,
@@ -11,7 +12,7 @@ import {
 } from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
-import { deleteCookie, setCookie } from '../../utils/cookie';
+import { deleteCookie, getCookie, setCookie } from '../../utils/cookie';
 
 export interface UserState {
   isInit: boolean;
@@ -36,7 +37,6 @@ export const getUserData = createAsyncThunk('user/get', async () =>
 export const updateUserData = createAsyncThunk(
   'user/update',
   async (user: Partial<TRegisterData>) => updateUserApi(user)
-  
 );
 
 export const loginUser = createAsyncThunk(
@@ -50,9 +50,9 @@ export const loginUser = createAsyncThunk(
 );
 
 export const logoutUser = createAsyncThunk('user/logout', async () => {
+  logoutApi();
   deleteCookie('accessToken');
   localStorage.removeItem('refreshToken');
-  return logoutApi();
 });
 
 export const registerUser = createAsyncThunk(

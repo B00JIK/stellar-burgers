@@ -244,7 +244,6 @@ export const updateUserApi = (
   });
 
 export const logoutApi = () =>
-  //!userSlice
   fetch(`${URL}/auth/logout`, {
     method: 'POST',
     headers: {

@@ -24,8 +24,8 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
 
   const onOrderClick = () => {
-    if (!isInit) navigate('/login');
-    if (constructorItems.bun && isInit) {
+    if (document.cookie === '') navigate('/login');
+    if (constructorItems.bun && document.cookie !== '') {
       dispatch(setOrderRequest(true));
       const bunId = constructorItems.bun._id;
       const ingredientsIds = constructorItems.ingredients.map(

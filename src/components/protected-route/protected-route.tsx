@@ -1,26 +1,23 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { RootState, useSelector } from '../../services/store';
+import { TUser } from '@utils-types';
 
-type ProtectedRouteProps = {
+type TProtectedRouteProps = {
   notAuthorized: boolean;
 };
 
-export const ProtectedRoute = ({ notAuthorized }: ProtectedRouteProps) => {
+export const ProtectedRoute = ({ notAuthorized }: TProtectedRouteProps) => {
   const location = useLocation();
-  const isInit = useSelector<RootState, boolean>((store) => store.user.isInit);
+  const user = useSelector((store) => store.user.user) as TUser;
   const from = location.state?.from || '/';
-  let isToken = false;
 
-  if (notAuthorized && isInit) {
+  if (notAuthorized && user) {
     return <Navigate to={from} />;
   }
 
-  if (document.cookie !== '') {
-    isToken = true;
-  }
-
-  if (!notAuthorized && !isInit && !isToken) {
+  if (!notAuthorized && !user) {
     return <Navigate to='/login' state={{ from: location }} />;
   }
+
   return <Outlet />;
 };

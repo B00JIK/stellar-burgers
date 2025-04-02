@@ -19,7 +19,9 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
             isActive ? styles.link_active : styles.link
           }
         >
-          <BurgerIcon type={'primary'} />
+          <BurgerIcon
+            type={location.pathname === '/' ? 'primary' : 'secondary'}
+          />
           <p className='text text_type_main-default ml-2 mr-10'>Конструктор</p>
         </NavLink>
         <NavLink
@@ -28,7 +30,9 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
             isActive ? styles.link_active : styles.link
           }
         >
-          <ListIcon type={'primary'} />
+          <ListIcon
+            type={location.pathname === '/feed' ? 'primary' : 'secondary'}
+          />
           <p className='text text_type_main-default ml-2'>Лента заказов</p>
         </NavLink>
       </div>
@@ -45,7 +49,9 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
         }
       >
         <div className={styles.link_position_last}>
-          <ProfileIcon type={'primary'} />
+          <ProfileIcon
+            type={location.pathname === '/profile' ? 'primary' : 'secondary'}
+          />
           <p className='text text_type_main-default ml-2'>
             {userName || 'Личный кабинет'}
           </p>

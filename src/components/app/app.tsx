@@ -19,11 +19,12 @@ import {
   ProtectedRoute
 } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/slices/ingredientsSlice';
-import { getUserData } from '../../services/slices/userSlice';
+import { getUser, getUserData } from '../../services/slices/userSlice';
 import { Center } from '../center';
+import { TUser } from '@utils-types';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ const App = () => {
               path='/feed/:number'
               element={
                 <Modal
-                  title={'Детали заказа'}
+                  title={`#${location.pathname.match(/\d+/)}`}
                   onClose={() => {
                     navigate(-1);
                   }}
@@ -112,7 +113,7 @@ const App = () => {
                 path='/profile/orders/:number'
                 element={
                   <Modal
-                    title={'Детали заказа'}
+                    title={`#${location.pathname.match(/\d+/)}`}
                     onClose={() => {
                       navigate(-1);
                     }}

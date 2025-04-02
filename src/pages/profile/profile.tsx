@@ -3,6 +3,8 @@ import { TUser } from '@utils-types';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { getUser, updateUserData } from '../../services/slices/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
+import { useNavigate } from 'react-router-dom';
+import { Preloader } from '@ui';
 
 export const Profile: FC = () => {
   /** TODO: взять переменную из стора */

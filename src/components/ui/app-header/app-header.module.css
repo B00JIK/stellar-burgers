@@ -21,7 +21,9 @@
 }
 
 .link_active {
+  display: flex;
   color: var(--text-primary-color);
+  text-decoration: none;
 }
 
 .link_position_last {
@@ -34,4 +36,5 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-}
+  width: 45%;
+} 

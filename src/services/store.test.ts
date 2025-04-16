@@ -7,7 +7,6 @@ describe('Проверка правильной инициализации rootR
     const previousStore = store.getState();
     const action = { type: 'UNKNOWN_ACTION' };
     const initialState = rootReducer(undefined, action);
-
     expect(initialState).toEqual(previousStore);
   });
 });

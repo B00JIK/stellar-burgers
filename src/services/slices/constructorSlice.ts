@@ -41,7 +41,7 @@ export const ingredientId = () => ({
   payload: nanoid()
 });
 
-const constructorSlice = createSlice({
+export const constructorSlice = createSlice({
   name: 'constructorbg',
   initialState,
   reducers: {
@@ -110,6 +110,7 @@ const constructorSlice = createSlice({
           bun: null,
           ingredients: []
         };
+        console.log(action.payload);
       });
   }
 });

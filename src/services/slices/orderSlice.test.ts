@@ -1,12 +1,7 @@
 import { TOrder } from '@utils-types';
-import { getOrderByNumber, orderSlice } from './orderSlice';
+import { getOrderByNumber, initialState, orderSlice } from './orderSlice';
 
 describe('Проверка редьюсера слайса order', () => {
-  const initialState = {
-    isLoading: false,
-    error: null,
-    order: null
-  };
   const order: TOrder = {
     createdAt: '2025-04-15T12:37:53.940Z',
     updatedAt: '2025-04-15T12:37:54.735Z',

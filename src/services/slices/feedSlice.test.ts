@@ -1,16 +1,7 @@
 import { TOrder } from '@utils-types';
-import { feedSlice, getFeed, getProfileOrders } from './feedSlice';
+import { feedSlice, getFeed, getProfileOrders, initialState } from './feedSlice';
 
 describe('Проверка редьюсера слайса feed', () => {
-  const initialState = {
-    isLoading: false,
-    orders: [],
-    error: null,
-    feed: {
-      total: 0,
-      totalToday: 0
-    }
-  };
   const orderFeed: TOrder[] = [
     {
       createdAt: '2025-04-15T12:37:53.940Z',

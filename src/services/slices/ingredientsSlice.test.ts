@@ -1,13 +1,7 @@
 import { TConstructorIngredient } from '@utils-types';
-import { getIngredients, ingredientsSlice } from './ingredientsSlice';
+import { getIngredients, ingredientsSlice, initialState } from './ingredientsSlice';
 
 describe('Проверка редьюсера слайса ingredients', () => {
- const initialState = {
-    isLoading: false,
-    ingredients: [],
-    error: null
-  };
-
   const main: TConstructorIngredient = {
     id: '643d69a5c3f7b9001cfa0941',
     _id: '643d69a5c3f7b9001cfa0941',

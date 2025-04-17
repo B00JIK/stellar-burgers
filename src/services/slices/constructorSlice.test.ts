@@ -2,6 +2,7 @@ import { TConstructorIngredient } from '@utils-types';
 import {
   addIngredient,
   constructorSlice,
+  initialState,
   moveIngredientDown,
   removeIngredient
 } from './constructorSlice';
@@ -52,16 +53,6 @@ describe('Проверка редьюсера слайса constructor', () => {
     image_mobile: 'https://code.s3.yandex.net/react/code/sauce-02-mobile.png'
   };
   test('Обработка экшена добавления ингредиента', () => {
-    const initialState = {
-      isLoading: false,
-      constructorItems: {
-        bun: null,
-        ingredients: []
-      },
-      orderRequest: false,
-      orderModalData: null,
-      error: null
-    };
     const newState = constructorSlice.reducer(
       initialState,
       addIngredient(main)

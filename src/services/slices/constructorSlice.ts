@@ -18,7 +18,7 @@ export interface constructorState {
   error: string | null;
 }
 
-const initialState: constructorState = {
+export const initialState: constructorState = {
   isLoading: false,
   constructorItems: {
     bun: null,

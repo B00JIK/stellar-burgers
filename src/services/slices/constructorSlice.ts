@@ -18,7 +18,7 @@ export interface constructorState {
   error: string | null;
 }
 
-const initialState: constructorState = {
+export const initialState: constructorState = {
   isLoading: false,
   constructorItems: {
     bun: null,
@@ -41,7 +41,7 @@ export const ingredientId = () => ({
   payload: nanoid()
 });
 
-const constructorSlice = createSlice({
+export const constructorSlice = createSlice({
   name: 'constructorbg',
   initialState,
   reducers: {
@@ -110,6 +110,7 @@ const constructorSlice = createSlice({
           bun: null,
           ingredients: []
         };
+        console.log(action.payload);
       });
   }
 });
